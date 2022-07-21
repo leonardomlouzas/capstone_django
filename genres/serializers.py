@@ -6,4 +6,7 @@ from .models import Genre
 class GenreSerializer(ModelSerializer):
     class Meta:
         model = Genre
-        fields = ('name')
+        exclude = ['genre_uuid']
+
+    def validate_name(self, name: str):
+        return name.title()

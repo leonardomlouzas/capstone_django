@@ -1,6 +1,8 @@
 from rest_framework.serializers import ModelSerializer
 
+from core.exceptions import NonNegativeException
 from core.exceptions import UniqueException
+from genres.models import Genre
 from movies.models import Cart
 from movies.models import Movie
 from genres.serializers import GenreSerializer
@@ -17,27 +19,41 @@ class MovieSerializer(ModelSerializer):
             'movie_uuid',
             'title',
             'run_time',
-            'year',
+            'premiere',
             'classification',
             'synopsis',
             'price',
             'stock',
-            'genres'
+            'genres',
         )
-    
+
     def validate_title(self, title: str):
         movie = Movie.objects.filter(title=title.title()).exists()
 
         if movie:
             raise UniqueException({'detail': 'movie already exists'})
-    
+
+        return title.title()
+
     def validate_classification(self, classification: int):
-        if classification < 0:
-            raise ValueError(
-                {'detail': 'ensure this value is greater than or equal to zero'}
+        if classification < 1:
+            raise NonNegativeException(
+                {'detail': 'ensure this value is greater than or equal to one'}
             )
-        
+
         return classification
+
+    def create(self, validated_data: dict):
+        genres_field: list[dict] = validated_data.pop('genres')
+
+        movie: Movie = Movie.objects.create(**validated_data)
+        movie.save()
+
+        for gnr in genres_field:
+            genre, _ = Genre.objects.get_or_create(**gnr)
+            movie.genres.add(genre)
+
+        return movie
 
 
 class CartSerializer(ModelSerializer):

@@ -8,7 +8,7 @@ class Movie(models.Model):
     )
     title = models.CharField(max_length=127, unique=True)
     run_time = models.CharField(max_length=10)
-    year = models.DateField(null=True)
+    premiere = models.DateField(null=True)
     classification = models.PositiveIntegerField()
     synopsis = models.TextField()
     price = models.FloatField()
