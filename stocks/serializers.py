@@ -6,4 +6,4 @@ from .models import Stock
 class StockSerializer(ModelSerializer):
     class Meta:
         model = Stock
-        fields = '__all__'
+        exclude = ['stock_uuid']

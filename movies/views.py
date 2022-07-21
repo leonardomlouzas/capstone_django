@@ -17,7 +17,7 @@ class MovieView(generics.ListCreateAPIView):
     def perform_create(self, serializer: MovieSerializer):
         valid_stock = serializer.validated_data.get('stock')
         stock = Stock.objects.create(**valid_stock)
-        
+
         serializer.save(stock=stock)
 
 
