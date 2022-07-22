@@ -17,6 +17,6 @@ class GenreSingleView(generics.ListAPIView):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        genre = self.kwargs["genre"]
+        genre = self.kwargs["genre"].title()
         movies = self.queryset.filter(name=genre).first()
-        return movies.movies.all()
+        return movies.movies.all() if movies else []
