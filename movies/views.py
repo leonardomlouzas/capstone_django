@@ -1,4 +1,4 @@
-from core.permissions import IsAdminOrReadOnly
+from core.permissions import IsAdminOrReadOnlyBook
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 
@@ -8,11 +8,11 @@ from stocks.models import Stock
 
 
 class MovieView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminOrReadOnlyBook]
+    authentication_classes = [TokenAuthentication]
+
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-
-    permission_classes = [IsAdminOrReadOnly]
-    authentication_classes = [TokenAuthentication]
 
     def perform_create(self, serializer: MovieSerializer):
         valid_stock = serializer.validated_data.get('stock')
