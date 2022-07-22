@@ -56,7 +56,7 @@ class AccountUpdateSerializer(serializers.ModelSerializer):
         )
 
         extra_kwargs = {'password': {'write_only': True}}
-    
+
     def validate_first_name(self, first_name: str):
         return first_name.title()
 
@@ -75,13 +75,13 @@ class AccountUpdateSerializer(serializers.ModelSerializer):
         if user.is_superuser:
             validated_data.setdefault('is_staff', is_staff)
             validated_data.setdefault('is_superuser', is_superuser)
-        
+
         for key, value in validated_data.items():
             if key is 'password':
                 value = make_password(value)
 
             setattr(instance, key, value)
-        
+
         instance.save()
 
         return instance

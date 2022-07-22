@@ -3,18 +3,18 @@ from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from rest_framework.request import Request
-from rest_framework.views import status
+from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.views import status
 
+from accounts.models import Account
+from accounts.permissions import IsAdmin
+from accounts.serializers import AccountSerializer
+from accounts.serializers import AccountUpdateSerializer
+from accounts.serializers import LoginSerializer
 from core.mixins import SerializerByMethodMixin
 from core.permissions import IsAdminOrReadOnlyAccount
-from .models import Account
-from .permissions import IsAdmin
-from .serializers import AccountSerializer
-from .serializers import AccountUpdateSerializer
-from .serializers import LoginSerializer
 
 
 class AccountView(generics.ListCreateAPIView):
@@ -25,7 +25,9 @@ class AccountView(generics.ListCreateAPIView):
     serializer_class = AccountSerializer
 
 
-class AccountUuidView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
+class AccountUuidView(
+    SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView
+):
     queryset = Account.objects.all()
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated, IsAdmin]
