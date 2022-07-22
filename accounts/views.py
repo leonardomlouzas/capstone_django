@@ -2,30 +2,42 @@ from django.contrib.auth import authenticate
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.request import Request
 from rest_framework.views import status
 from rest_framework.views import APIView
 
-# from core.permissions import IsAdminOrReadOnly
+from core.mixins import SerializerByMethodMixin
+from core.permissions import IsAdminOrReadOnlyAccount
 from .models import Account
+from .permissions import IsAdmin
 from .serializers import AccountSerializer
+from .serializers import AccountUpdateSerializer
 from .serializers import LoginSerializer
 
 
 class AccountView(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnlyAccount]
 
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
 
-class AccountUuidView(generics.RetrieveUpdateDestroyAPIView):
+class AccountUuidView(SerializerByMethodMixin, generics.RetrieveUpdateDestroyAPIView):
     queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated, IsAdmin]
 
     lookup_field = 'user_uuid'
+
+    serializer_map = {
+        'GET': AccountSerializer,
+        'PATCH': AccountUpdateSerializer,
+        'PUT': AccountUpdateSerializer,
+        'DELETE': AccountSerializer,
+    }
 
 
 class LoginView(APIView):
