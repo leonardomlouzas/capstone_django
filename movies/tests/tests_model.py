@@ -40,7 +40,9 @@ class MovieModelTest(TestCase):
         self.assertEqual(self.movie_obj.premiere, self.movie_data['premiere'])
 
         self.assertIsInstance(self.movie_obj.classification, int)
-        self.assertEqual(self.movie_obj.classification, self.movie_data['classification'])
+        self.assertEqual(
+            self.movie_obj.classification, self.movie_data['classification']
+        )
 
         self.assertIsInstance(self.movie_obj.synopsis, str)
         self.assertEqual(self.movie_obj.synopsis, self.movie_data['synopsis'])
@@ -50,3 +52,6 @@ class MovieModelTest(TestCase):
 
         self.assertIsInstance(self.movie_obj.stock, Stock)
         self.assertEqual(self.movie_obj.stock, self.stock_obj)
+
+        self.assertIsInstance(self.movie_obj.genres.first(), Genre)
+        self.assertEqual(self.movie_obj.genres.first(), self.genre_obj)
