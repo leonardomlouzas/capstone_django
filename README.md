@@ -63,9 +63,17 @@ _Formato da requisição_
 _Formato de resposta_
 
 ```json
-{
-	
-}
+[
+ 	{
+	"user_uuid": "c7e2df16-ef79-485a-a535-40dc3846151f",
+	"first_name": "Sayid",
+	"last_name": "Jarrah",
+	"email": "jarrahsayid@lost.com",
+	"created_at": "2022-07-25T13:34:17.705999Z",
+	"is_staff": true,
+	"is_superuser": false
+	}
+]
 ```
 #### GET /accounts/<user_id>
 
