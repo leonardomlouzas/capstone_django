@@ -31,7 +31,7 @@ class MovieSerializer(ModelSerializer):
         movie = Movie.objects.filter(title=title.title()).exists()
 
         if movie:
-            raise UniqueException({'detail': 'movie already exists'})
+            raise UniqueException({'detail': 'title already exists'})
 
         return title.title()
 
@@ -54,6 +54,26 @@ class MovieSerializer(ModelSerializer):
             movie.genres.add(genre)
 
         return movie
+
+    def update(self, instance: Movie, validated_data: dict):
+        genres_field: list[dict] = validated_data.pop('genres', [])
+        stock_field = validated_data.pop('stock', {})
+
+        instance.stock.quantity = stock_field.get(
+            'quantity', instance.stock.quantity
+        )
+        instance.stock.save()
+
+        for gnr in genres_field:
+            genre, _ = Genre.objects.get_or_create(**gnr)
+            instance.genres.add(genre)
+
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
+
+        instance.save()
+
+        return instance
 
 
 class CartSerializer(ModelSerializer):
