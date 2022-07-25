@@ -57,15 +57,16 @@ class MovieSerializer(ModelSerializer):
 
     def update(self, instance: Movie, validated_data: dict):
         genres_field: list[dict] = validated_data.pop('genres', [])
-        stock_field = validated_data.pop('stock', {})
+        stock_field: any | dict = validated_data.pop('stock', {})
 
         instance.stock.quantity = stock_field.get(
             'quantity', instance.stock.quantity
         )
-        instance.stock.save()
+        # instance.stock.save()
 
         for gnr in genres_field:
             genre, _ = Genre.objects.get_or_create(**gnr)
+            print(genre)
             instance.genres.add(genre)
 
         for key, value in validated_data.items():
