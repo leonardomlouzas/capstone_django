@@ -1,4 +1,4 @@
-from core.permissions import IsAdminOrReadOnlyBook
+from core.permissions import IsAdminOrReadOnlyMovie
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 
@@ -8,7 +8,7 @@ from stocks.models import Stock
 
 
 class MovieView(generics.ListCreateAPIView):
-    permission_classes = [IsAdminOrReadOnlyBook]
+    permission_classes = [IsAdminOrReadOnlyMovie]
     authentication_classes = [TokenAuthentication]
 
     queryset = Movie.objects.all()
@@ -21,6 +21,11 @@ class MovieView(generics.ListCreateAPIView):
         serializer.save(stock=stock)
 
 
-# class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Movie.objects.all()
-#     serializer_class = MovieSerializer
+class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminOrReadOnlyMovie]
+
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+    lookup_field = 'movie_uuid'
