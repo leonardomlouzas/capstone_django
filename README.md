@@ -309,3 +309,176 @@ _Formato de resposta_
 	}
 ]
 ```
+## Cart
+
+#### GET /cart
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{
+}
+```
+
+_Formato de resposta_
+
+```json
+[
+	{
+		"cart_uuid": "b7dc4d39-824f-4103-93b5-36d2446a9b22",
+		"total": 104.00,
+		"paid": true,
+		"quantity": 5,
+		"movies": {
+			"movie_uuid": "6830d130-6890-438b-a471-69bee9099edd",
+			"title": "O Poderoso Chefão 2",
+			"price": 20.99,
+			"stock": {
+				"quantity": 0
+			}
+		}
+	},
+	{
+		"cart_uuid": "9f85c8bd-8803-476a-a52c-4fc96fb3be7a",
+		"total": 104.00,
+		"paid": false,
+		"quantity": 5,
+		"movies": {
+			"movie_uuid": "b91446e4-9698-4ce5-8dfd-7f3c789e9cfa",
+			"title": "O Poderoso Chefão 1",
+			"price": 20.99,
+			"stock": {
+				"quantity": 0
+			}
+		}
+	}
+]
+```
+
+#### GET /cart/<cart_id>
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{	
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+		"cart_uuid": "9f85c8bd-8803-476a-a52c-4fc96fb3be7a",
+		"total": 104.00,
+		"paid": true,
+		"quantity": 5,
+		"movies": {
+			"movie_uuid": "b91446e4-9698-4ce5-8dfd-7f3c789e9cfa",
+			"title": "O Poderoso Chefão 1",
+			"price": 20.99,
+			"stock": {
+				"quantity": 0
+			}
+		}
+	}
+```
+#### GET /cart/pending
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{
+}
+```
+
+_Formato de resposta_
+
+```json
+[
+	{
+		"cart_uuid": "9f85c8bd-8803-476a-a52c-4fc96fb3be7a",
+		"total": 104.00,
+		"paid": false,
+		"quantity": 5,
+		"movies": {
+			"movie_uuid": "b91446e4-9698-4ce5-8dfd-7f3c789e9cfa",
+			"title": "O Poderoso Chefão 1",
+			"price": 20.99,
+			"stock": {
+				"quantity": 0
+			}
+		}
+	}
+]
+
+```
+#### POST /cart/add/<movie_id>
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{
+	"quantity": 2
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"cart_uuid": "ce0e13b2-1b10-488e-b36d-0cc685447ffa",
+	"total": 41.98,
+	"paid": false,
+	"quantity": 2,
+	"movies": {
+		"movie_uuid": "68ca886a-878f-4a3d-befe-5a1c36b101cb",
+		"title": "O Poderoso Chefão 2",
+		"price": 20.99,
+		"stock": {
+			"quantity": 5
+		}
+	}
+}
+```
+#### POST /cart/pay/
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"status": "successful payment"
+}
+```
+#### DELETE /cart/<cart_id>
+
+- Nessesario token de usuario 
+
+_Formato da requisição_
+
+```json
+{
+}
+```
+
+_Formato de resposta_
+
+```json
+NO CONTENT
+```
