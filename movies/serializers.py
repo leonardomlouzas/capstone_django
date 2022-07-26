@@ -1,12 +1,11 @@
-from rest_framework.serializers import ModelSerializer
-
-from core.exceptions import NonNegativeException
-from core.exceptions import UniqueException
+from core.exceptions import NonNegativeException, StockExceedsException, UniqueException
+from django.shortcuts import get_object_or_404
 from genres.models import Genre
-from movies.models import Cart
-from movies.models import Movie
 from genres.serializers import GenreSerializer
+from rest_framework.serializers import ModelSerializer
 from stocks.serializers import StockSerializer
+
+from movies.models import Cart, Movie
 
 
 class MovieSerializer(ModelSerializer):
@@ -77,14 +76,74 @@ class MovieSerializer(ModelSerializer):
         return instance
 
 
+class CartMovieSerializer(ModelSerializer):
+    stock = StockSerializer()
+
+    class Meta:
+        model = Movie
+        fields = (
+            "movie_uuid",
+            "title",
+            "price",
+            "stock",
+        )
+
+
 class CartSerializer(ModelSerializer):
-    movies = MovieSerializer(many=True)
+    movies = CartMovieSerializer(read_only=True)
 
     class Meta:
         model = Cart
         fields = (
-            'total',
-            'quantity',
-            'paid',
-            'movies',
+            "cart_uuid",
+            "total",
+            "paid",
+            "quantity",
+            "movies",
         )
+
+        read_only_fields = ("total","paid",)
+
+    def validate_quantity(self, quantity: int):
+        if quantity < 1:
+            raise NonNegativeException(
+                {'detail': 'ensure this value is greater than or equal to one'}
+            )
+
+        return quantity
+
+    def create(self, validated_data: dict):
+
+        quantity = validated_data.get("quantity")
+
+        movie_uuid = validated_data.get("movies").pk
+
+        account = validated_data.get('account_id')
+
+        cart_filter = Cart.objects.filter(account_id=account, paid=False)
+
+        movie = get_object_or_404(Movie, pk=movie_uuid)
+
+        if quantity > movie.stock.quantity:
+            raise StockExceedsException
+
+        if cart_filter.exists():
+
+            cart_item = cart_filter.first()
+            cart_item.quantity += quantity
+
+            if cart_item.quantity > movie.stock.quantity:
+                raise StockExceedsException
+
+            cart_item.total = cart_item.quantity * movie.price
+            cart_item.save()
+
+        else:
+
+            total = quantity * movie.price
+
+            cart: Cart = Cart.objects.create(**validated_data, total=total)
+
+            return cart
+
+        return cart_item
