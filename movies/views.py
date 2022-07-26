@@ -1,6 +1,8 @@
-from core.permissions import IsAdminOrReadOnlyBook
+
+from core.permissions import IsAdminOrReadOnlyBook, IsAdminOrReadOnlyMovie
 from core.exceptions import StockExceedsException
 from django.shortcuts import get_object_or_404
+
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -12,7 +14,7 @@ from movies.serializers import CartSerializer, MovieSerializer
 
 
 class MovieView(generics.ListCreateAPIView):
-    permission_classes = [IsAdminOrReadOnlyBook]
+    permission_classes = [IsAdminOrReadOnlyMovie]
     authentication_classes = [TokenAuthentication]
 
     queryset = Movie.objects.all()
@@ -25,10 +27,16 @@ class MovieView(generics.ListCreateAPIView):
         serializer.save(stock=stock)
 
 
-# class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Movie.objects.all()
-#     serializer_class = MovieSerializer
 
+class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminOrReadOnlyMovie]
+
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+    lookup_field = 'movie_uuid'
+    
 class CartAddView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]

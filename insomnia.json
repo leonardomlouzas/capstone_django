@@ -1,0 +1,1366 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-07-25T23:02:48.943Z",
+  "__export_source": "insomnia.desktop.app:v2022.4.2",
+  "resources": [
+    {
+      "_id": "req_b4645a37d31b48f486a43b01c09b947d",
+      "parentId": "fld_a1044b36ddc54b1283227996d5d10dce",
+      "modified": 1658785738171,
+      "created": 1658520400215,
+      "url": "{{ _['url-dev'] }}/genres/",
+      "name": "list genres",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658545418864,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_a1044b36ddc54b1283227996d5d10dce",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1658520398373,
+      "created": 1658520398373,
+      "name": "genres",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658520398373,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_f058337bb65d414383e95eb3356a4157",
+      "parentId": null,
+      "modified": 1650989596717,
+      "created": 1650989596717,
+      "name": "capstone",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_ced1bc5259274474b435ce47fe8dac49",
+      "parentId": "fld_a1044b36ddc54b1283227996d5d10dce",
+      "modified": 1658785757575,
+      "created": 1658520461719,
+      "url": "{{ _['url-dev'] }}/genres/crime",
+      "name": "retrieve genres by name",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658545418839,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1d22e436b73044beb91ea2e380b99669",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785773972,
+      "created": 1658545760715,
+      "url": "{{ _['url-dev'] }}/accounts/",
+      "name": "create account with missing fields",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"claire\",\n\t\"last_name\": \"liTTleton\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_06d0e5446b684dc689bb2076de84af39"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token",
+        "disabled": true
+      },
+      "metaSortKey": -1658420246060,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "parentId": "fld_7d83d7a8c7ba4b68ac52e1b4a1a381ec",
+      "modified": 1658545710406,
+      "created": 1658545710406,
+      "name": "invalids",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658545710406,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_7d83d7a8c7ba4b68ac52e1b4a1a381ec",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1658419499303,
+      "created": 1650989610677,
+      "name": "accounts",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650989610677,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_0156616dba5247dab7a337b24cba6728",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785779257,
+      "created": 1658546203981,
+      "url": "{{ _['url-dev'] }}/accounts/",
+      "name": "create account email already exists",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"claire\",\n\t\"last_name\": \"liTTleton\",\n\t\"email\": \"littletonCLAIRE@lost.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_06d0e5446b684dc689bb2076de84af39"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token",
+        "disabled": true
+      },
+      "metaSortKey": -1658420246047.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_49299f9cb9c748b79755df96f462a52c",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785784061,
+      "created": 1658545778991,
+      "url": "{{ _['url-dev'] }}/login/",
+      "name": "login invalid credentials",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"austenkate@lost.co\",\n\t\"password\": \"wW*8uuuu\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6fb6ea97fd494900bc5138a10aa642d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420246010,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_22220475ee1743f9ad5606191ca4aeea",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785788816,
+      "created": 1658546365217,
+      "url": "{{ _['url-dev'] }}/login/",
+      "name": "login invalid email format",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"austenkate@\",\n\t\"password\": \"wW*8uuuu\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6fb6ea97fd494900bc5138a10aa642d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420246003.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_80982c5ba06747b29eb051d273513ef5",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785796056,
+      "created": 1658546312724,
+      "url": "{{ _['url-dev'] }}/login/",
+      "name": "login missing fields",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"austenkate@lost.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6fb6ea97fd494900bc5138a10aa642d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420245997.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e9bebdfb3f094bc38bac362f8ba1c093",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785861859,
+      "created": 1658547101519,
+      "url": "{{ _['url-dev'] }}/accounts/",
+      "name": "admin - list accounts with invalid token",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "token",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245978.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e1a7c5c47e0c4d4f81a6c78e5c9b911c",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785904490,
+      "created": 1658545809572,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae1",
+      "name": "non admin - retrieve third party account",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1c8ec14ae21a4ad7b380163a4e78428d",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420245960,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_13c8c5e4d14346c0ab99905d1fa6c00c",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785927710,
+      "created": 1658546703975,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae",
+      "name": "admin - retrieve account with non-existing uuid",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1c8ec14ae21a4ad7b380163a4e78428d",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420245947.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e3e8aedc343b4c57b2705bab136e3c10",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658785936752,
+      "created": 1658545821197,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d7/",
+      "name": "admin - update account by non-existing uuid",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"sayid\",\n\t\"email\": \"jarrahsayid@lOSt.com\",\n\t\"is_staff\": true,\n\t\"is_superuser\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5492c7ad77d74be19ef162d01c8d31dc"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245910,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_df6722a6c2a247618aaa74929607d9d1",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658786146187,
+      "created": 1658547615872,
+      "url": "{{ _['url-dev'] }}/accounts/a23ec762-cebc-47a5-bfb9-ae40b09b0954/",
+      "name": "admin - update account with invalid value",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": []\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5492c7ad77d74be19ef162d01c8d31dc"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245897.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c9c6e79b06a1430d9fd7d43ec61722a2",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658786150617,
+      "created": 1658786085547,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d/",
+      "name": "update account by uuid nonexistent",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_b059a06f2ec7452cacdb2fa4996d9139"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245878.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_fb5b5c8ce8ba4a4ca21b7a066f5f9daa",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658786153889,
+      "created": 1658786128582,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d/",
+      "name": "update account by uuid nonexistent",
+      "description": "",
+      "method": "PUT",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_b059a06f2ec7452cacdb2fa4996d9139"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245869.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5853d0da055e4e06a657d72715cb0bb8",
+      "parentId": "fld_56a20a9c989c4ada98e8f6b8c43a2797",
+      "modified": 1658786044558,
+      "created": 1658545837043,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d",
+      "name": "destroy account by uuid nonexistent",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245860,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f882ee18b6ad4c67beb2a9162b0666c8",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786240816,
+      "created": 1650989640445,
+      "url": "{{ _['url-dev'] }}/accounts/",
+      "name": "create account",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"CLAIRE\",\n\t\"last_name\": \"littleton\",\n\t\"email\": \"littletonCLAIRE@lost.com\",\n\t\"password\": \"wW*8uuuu\",\n\t\"is_superuser\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_06d0e5446b684dc689bb2076de84af39"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token",
+        "disabled": true
+      },
+      "metaSortKey": -1658420246085,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "parentId": "fld_7d83d7a8c7ba4b68ac52e1b4a1a381ec",
+      "modified": 1658545704569,
+      "created": 1658545704569,
+      "name": "valids",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658545704569,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_7c10d94a520d491bbc1326d66453f2bd",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786421624,
+      "created": 1658420246035,
+      "url": "{{ _['url-dev'] }}/login/",
+      "name": "login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"humedesmond@lost.com\",\n\t\"password\": \"wW*8uuuu\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6fb6ea97fd494900bc5138a10aa642d9"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420246035,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8d064af4c0664155bc1d9cb0b0e45785",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786248882,
+      "created": 1650989680606,
+      "url": "{{ _['url-dev'] }}/accounts/",
+      "name": "list accounts",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token",
+        "disabled": false
+      },
+      "metaSortKey": -1658420245985,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_471454f1a99d42faa6615826090cf551",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786269047,
+      "created": 1658419624207,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae1",
+      "name": "admin - retrieve account by uuid",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1c8ec14ae21a4ad7b380163a4e78428d",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420245935,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4582b23666454fff93cf2374cb2b74ff",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786272575,
+      "created": 1658548510033,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae1",
+      "name": "non admin - retrieve own account by uuid",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1c8ec14ae21a4ad7b380163a4e78428d",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658420245922.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_291ffb4687ae4d02a86bae185a61cbf5",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786333623,
+      "created": 1650989715481,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae1/",
+      "name": "admin - update account by uuid",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"jack\",\n\t\"is_staff\": true,\n\t\"is_superuser\": false\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5492c7ad77d74be19ef162d01c8d31dc"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245885,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3435b62040044afb9e9115f93d1dfd75",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786422559,
+      "created": 1658548372597,
+      "url": "{{ _['url-dev'] }}/accounts/5a7d0a50-d12f-46c4-9ce5-3bfbdaabbae1/",
+      "name": "admin - update account by uuid superuser true",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"first_name\": \"shephard\",\n\t\"is_staff\": true,\n\t\"is_superuser\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5492c7ad77d74be19ef162d01c8d31dc"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245872.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_04a8ffb82d6c4b0d82b3c3cb77a07bb3",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786430088,
+      "created": 1650989767045,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d78",
+      "name": "admin - destroy account by uuid",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420245835,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6b4280f6582b4cfebc616f2c5ae4b04c",
+      "parentId": "fld_fac891ac2b5440e1b52e5e5c55dac46d",
+      "modified": 1658786432626,
+      "created": 1658548629306,
+      "url": "{{ _['url-dev'] }}/accounts/3bc650e0-2e0f-4de6-9ba8-78f93f535d78",
+      "name": "non admin - destroy own account by uuid",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658356084183,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_12c20bb3bcf24bd78bf7ef96c619a225",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658784541005,
+      "created": 1658784327125,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77",
+      "name": "non admin - destroy movie by uuid",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658784327125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "parentId": "fld_9e8daa507d26408fa055e230498c9d22",
+      "modified": 1658548711512,
+      "created": 1658548711512,
+      "name": "invalids",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658548711512,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_9e8daa507d26408fa055e230498c9d22",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1658420695620,
+      "created": 1658420683930,
+      "name": "movies",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1650989610627,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_6194a183f2b7439d8bf7556475c81994",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658784838243,
+      "created": 1658784582131,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "non admin - update movie by uuid",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ca286c9f3ae048abb6d7b68fdc84f023"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658771679975.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c6bba24b863f4b988e148279bd2077da",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658784830871,
+      "created": 1658784740527,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "update movie by uuid without token",
+      "description": "",
+      "method": "PATCH",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4d7cddeddc484214999a64c4be787017"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658768518188.125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c9662128e29547a090e014c0798d8b32",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658785578686,
+      "created": 1658784884102,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "create movie by uuid without token",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"justiça a qualquer preço\",\n\t\"run_time\": \"105\",\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t],\n\t\"stock\": {\n\t\t\"quantity\": 5\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4d7cddeddc484214999a64c4be787017"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658766937294.4375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_63c61413b7024e28882773a204598b5f",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658786528140,
+      "created": 1658785050991,
+      "url": "{{ _['url-dev'] }}/movies/",
+      "name": "admin - create movie by uuid missing required fields",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4d7cddeddc484214999a64c4be787017"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658766542071.0156,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_96e5bb3b341940f383bb42fc9148e79b",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658786542680,
+      "created": 1658784999040,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "create movie by uuid with invalid token",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"justiça a qualquer preço\",\n\t\"run_time\": \"105\",\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t],\n\t\"stock\": {\n\t\t\"quantity\": 5\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token token",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4d7cddeddc484214999a64c4be787017"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658766146847.5938,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c369737516eb441b99b7edb0bab60c64",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658786580913,
+      "created": 1658784703441,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "update movie by uuid wihtout token",
+      "description": "",
+      "method": "PUT",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_645300ef34544e6ba69b29947ccd335e"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658765751624.1719,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_db43e378d21d4419880873433e3006aa",
+      "parentId": "fld_178f7df799f64c4b8e2be2e72bdf5553",
+      "modified": 1658786594057,
+      "created": 1658784627681,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77/",
+      "name": "non admin - update movie by uuid",
+      "description": "",
+      "method": "PUT",
+      "body": { "mimeType": "application/json", "text": "{\n\t\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_dba341d421dc4fd88f4f01ff603273e2",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0758d1253b794f2caad3875c0a686090"
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658765356400.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_5ee53dd5a3c1446da81c88c6ec4f9644",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658787144551,
+      "created": 1658759032826,
+      "url": "{{ _['url-dev'] }}/movies/27591dc5-02bf-4062-aa5b-6ac4054f0a77",
+      "name": "admin - destroy movie by uuid",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_260d630c8f0f462f8806d5e4eaab0510",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658759032826,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "parentId": "fld_9e8daa507d26408fa055e230498c9d22",
+      "modified": 1658548702163,
+      "created": 1658548702163,
+      "name": "valids",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1658548702163,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_8d95e95d16364e5a8d27d8c37080ad4c",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658787149232,
+      "created": 1658758937170,
+      "url": "{{ _['url-dev'] }}/movies/5b6d8336-1196-42cb-a96d-45c4cc488791/",
+      "name": "admin - update movie by uuid",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"justiça a qualquer preço\",\n\t\"run_time\": \"105\",\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t],\n\t\"stock\": {\n\t\t\"quantity\": 5\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_76831a7573d34b518e5f1490c0e7f1f5"
+        },
+        {
+          "id": "pair_5c79fbb997c34145af358e5c91abcf06",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1658758937170,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_dd2bcab23adf4eb7ba5be7a77896e1aa",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658790097426,
+      "created": 1658758869959,
+      "url": "{{ _['url-dev'] }}/movies/5b6d8336-1196-42cb-a96d-45c4cc488791/",
+      "name": "admin - update movie by uuid",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"run_time\": \"105\",\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"stock\": {\n\t\t\"quantity\": 7\n\t},\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t}, \n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_770d22c60d2841709ae216a520c66561"
+        },
+        {
+          "id": "pair_5b5166fcc33f4042a491caa6a5576b81",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": { "type": "bearer" },
+      "metaSortKey": -1658758869959,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2e35ce5e68ed4d96a7f45e08cfb2e48a",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658777611196,
+      "created": 1658758711374,
+      "url": "{{ _['url-dev'] }}/movies/38f71d3b-7733-47b8-836a-425ee7e1493b",
+      "name": "retrieve movie by uuid",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658758711374,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c77f2022d60848b19beef042cae03853",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658787161668,
+      "created": 1658420721119,
+      "url": "{{ _['url-dev'] }}/movies/",
+      "name": "create movie",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"justiça a qualquer preço\",\n\t\"run_time\": \"105\",\n\t\"premiere\": \"2007-08-04\",\n\t\"classification\": 16,\n\t\"synopsis\": \"Um agente e sua protegida investigam o caso de uma menina desaparecida que pode estar relacionado com um criminoso sexual em liberdade condicional.\",\n\t\"price\": 21.99,\n\t\"genres\": [\n\t\t{\n\t\t\t\"name\": \"thriller\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"ficção policial\"\n\t\t}\n\t],\n\t\"stock\": {\n\t\t\"quantity\": 5\n\t}\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_96af46a3ccc84b4d962abf23f5a99b66"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}",
+        "prefix": "Token"
+      },
+      "metaSortKey": -1658420721119,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ab014bff53414e7c9b9f7a8940e6263a",
+      "parentId": "fld_8f5ca9fb70614923a79c92fa72bb2edc",
+      "modified": 1658548721962,
+      "created": 1658420700218,
+      "url": "{{ _['url-dev'] }}/movies/",
+      "name": "list movies",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1658420721069,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_8dba2717eef769572c4ee131c83083613f6582fe",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1658786421156,
+      "created": 1650989596723,
+      "name": "Base Environment",
+      "data": {
+        "url-dep": "https://capstone-django-kenzie.herokuapp.com/api",
+        "url-dev": "http://127.0.0.1:8000/api",
+        "token": "b45c102cc35cb96e574a11785cc9458a3f2dba56"
+      },
+      "dataPropertyOrder": { "&": ["url-dep", "url-dev", "token"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1650989596723,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_8dba2717eef769572c4ee131c83083613f6582fe",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1650989596723,
+      "created": 1650989596723,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_6da80d78f6ab4b4697fb8ef17634e2cf",
+      "parentId": "wrk_f058337bb65d414383e95eb3356a4157",
+      "modified": 1650989596718,
+      "created": 1650989596718,
+      "fileName": "capstone",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
