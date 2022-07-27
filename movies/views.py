@@ -1,5 +1,5 @@
 
-from core.permissions import IsAdminOrReadOnlyBook, IsAdminOrReadOnlyMovie
+from core.permissions import IsAdminOrReadOnlyMovie
 from core.exceptions import StockExceedsException
 from django.shortcuts import get_object_or_404
 
