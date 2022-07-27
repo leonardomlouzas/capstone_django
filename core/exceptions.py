@@ -10,3 +10,7 @@ class UniqueException(APIException):
 class NonNegativeException(APIException):
     status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
     default_detail = 'this value must be positive'
+
+class StockExceedsException(APIException):
+    status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
+    default_detail = "Ordered quantity exceeds stock"
