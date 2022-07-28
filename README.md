@@ -482,3 +482,84 @@ _Formato de resposta_
 ```json
 NO CONTENT
 ```
+## Possiveis erros
+
+#### Requisições sem o token 
+
+
+_Formato da requisição_
+
+```json
+{
+	"first_name": "jack",
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"detail": "Invalid token header. No credentials provided."
+}
+```
+#### Requisições com token invalido
+
+
+_Formato da requisição_
+
+```json
+{
+	"first_name": "jack",
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"detail": "Invalid token."
+}
+```
+
+#### Requisições com json invalido
+
+_Formato da requisição_
+
+```json
+{
+	"first_name": "CLAIRE"
+
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"last_name": [
+		"This field is required."
+	],
+	"password": [
+		"This field is required."
+	],
+	"email": [
+		"This field is required."
+	]
+}
+```
+#### Usuario ou item não encontrado 
+
+_Formato da requisição_
+
+```json
+{
+}
+```
+
+_Formato de resposta_
+
+```json
+{
+	"detail": "Not found."
+}
+```
