@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from rest_framework import generics
+
 from genres.models import Genre
-from movies.serializers import MovieSerializer
 from genres.serializers import GenreSerializer
+from movies.serializers import MovieSerializer
 
 
 class GenreView(generics.ListAPIView):
