@@ -52,3 +52,6 @@ class MovieModelTest(TestCase):
 
         self.assertIsInstance(self.movie_obj.stock, Stock)
         self.assertEqual(self.movie_obj.stock, self.stock_obj)
+
+        self.assertIsInstance(self.movie_obj.genres.first(), Genre)
+        self.assertEqual(self.movie_obj.genres.first(), self.genre_obj)
