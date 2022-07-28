@@ -85,10 +85,10 @@ class CartMovieSerializer(ModelSerializer):
     class Meta:
         model = Movie
         fields = (
-            'movie_uuid',
-            'title',
-            'price',
-            'stock',
+            "movie_uuid",
+            "title",
+            "price",
+            "stock",
         )
 
 
@@ -98,17 +98,14 @@ class CartSerializer(ModelSerializer):
     class Meta:
         model = Cart
         fields = (
-            'cart_uuid',
-            'total',
-            'paid',
-            'quantity',
-            'movies',
+            "cart_uuid",
+            "total",
+            "paid",
+            "quantity",
+            "movies",
         )
 
-        read_only_fields = (
-            'total',
-            'paid',
-        )
+        read_only_fields = ("total","paid",)
 
     def validate_quantity(self, quantity: int):
         if quantity < 1:
@@ -120,9 +117,9 @@ class CartSerializer(ModelSerializer):
 
     def create(self, validated_data: dict):
 
-        quantity = validated_data.get('quantity')
+        quantity = validated_data.get("quantity")
 
-        movie_uuid = validated_data.get('movies').pk
+        movie_uuid = validated_data.get("movies").pk
 
         account_uuid = validated_data.get('account').pk
 
@@ -143,12 +140,12 @@ class CartSerializer(ModelSerializer):
             if cart_item.quantity > movie.stock.quantity:
                 raise StockExceedsException
 
-            cart_item.total = round(cart_item.quantity * movie.price, 2)
+            cart_item.total = round(cart_item.quantity * movie.price,2) 
             cart_item.save()
 
         else:
 
-            total = round(quantity * movie.price, 2)
+            total = round(quantity * movie.price,2)
 
             cart: Cart = Cart.objects.create(**validated_data, total=total)
 
