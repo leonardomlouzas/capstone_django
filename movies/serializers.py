@@ -1,11 +1,14 @@
-from core.exceptions import NonNegativeException, StockExceedsException, UniqueException
+from core.exceptions import NonNegativeException
+from core.exceptions import StockExceedsException
+from core.exceptions import UniqueException
 from django.shortcuts import get_object_or_404
+from rest_framework.serializers import ModelSerializer
+
 from genres.models import Genre
 from genres.serializers import GenreSerializer
-from rest_framework.serializers import ModelSerializer
+from movies.models import Cart
+from movies.models import Movie
 from stocks.serializers import StockSerializer
-
-from movies.models import Cart, Movie
 
 
 class MovieSerializer(ModelSerializer):
@@ -82,10 +85,10 @@ class CartMovieSerializer(ModelSerializer):
     class Meta:
         model = Movie
         fields = (
-            "movie_uuid",
-            "title",
-            "price",
-            "stock",
+            'movie_uuid',
+            'title',
+            'price',
+            'stock',
         )
 
 
@@ -95,14 +98,17 @@ class CartSerializer(ModelSerializer):
     class Meta:
         model = Cart
         fields = (
-            "cart_uuid",
-            "total",
-            "paid",
-            "quantity",
-            "movies",
+            'cart_uuid',
+            'total',
+            'paid',
+            'quantity',
+            'movies',
         )
 
-        read_only_fields = ("total","paid",)
+        read_only_fields = (
+            'total',
+            'paid',
+        )
 
     def validate_quantity(self, quantity: int):
         if quantity < 1:
@@ -114,15 +120,17 @@ class CartSerializer(ModelSerializer):
 
     def create(self, validated_data: dict):
 
-        quantity = validated_data.get("quantity")
+        quantity = validated_data.get('quantity')
 
-        movie_uuid = validated_data.get("movies").pk
+        movie_uuid = validated_data.get('movies').pk
 
         account_uuid = validated_data.get('account').pk
 
         movie = get_object_or_404(Movie, pk=movie_uuid)
 
-        cart_filter = Cart.objects.filter(account_id=account_uuid, movies_id=movie_uuid, paid=False)
+        cart_filter = Cart.objects.filter(
+            account_id=account_uuid, movies_id=movie_uuid, paid=False
+        )
 
         if quantity > movie.stock.quantity:
             raise StockExceedsException
@@ -135,12 +143,12 @@ class CartSerializer(ModelSerializer):
             if cart_item.quantity > movie.stock.quantity:
                 raise StockExceedsException
 
-            cart_item.total = round(cart_item.quantity * movie.price,2) 
+            cart_item.total = round(cart_item.quantity * movie.price, 2)
             cart_item.save()
 
         else:
 
-            total = round(quantity * movie.price,2)
+            total = round(quantity * movie.price, 2)
 
             cart: Cart = Cart.objects.create(**validated_data, total=total)
 

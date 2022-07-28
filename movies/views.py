@@ -1,16 +1,19 @@
-
 from core.permissions import IsAdminOrReadOnlyMovie
 from core.exceptions import StockExceedsException
 from django.shortcuts import get_object_or_404
-
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView, Request, Response, status
-from stocks.models import Stock
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.views import status
 
-from movies.models import Cart, Movie
-from movies.serializers import CartSerializer, MovieSerializer
+from movies.models import Cart
+from movies.models import Movie
+from movies.serializers import CartSerializer
+from movies.serializers import MovieSerializer
+from stocks.models import Stock
 
 
 class MovieView(generics.ListCreateAPIView):
@@ -27,7 +30,6 @@ class MovieView(generics.ListCreateAPIView):
         serializer.save(stock=stock)
 
 
-
 class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdminOrReadOnlyMovie]
@@ -36,7 +38,8 @@ class MovieUuidView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
 
     lookup_field = 'movie_uuid'
-    
+
+
 class CartAddView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
@@ -45,7 +48,7 @@ class CartAddView(generics.CreateAPIView):
     serializer_class = CartSerializer
 
     def perform_create(self, serializer: CartSerializer):
-        movie_uuid = self.kwargs["movie_uuid"]
+        movie_uuid = self.kwargs['movie_uuid']
 
         movie: Movie = get_object_or_404(Movie, pk=movie_uuid)
 
@@ -66,6 +69,7 @@ class CartListView(generics.ListAPIView):
             carts: list[Cart] = Cart.objects.filter(account=self.request.user)
             return carts
 
+
 class CartListPendingView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
@@ -77,8 +81,11 @@ class CartListPendingView(generics.ListAPIView):
         if self.request.user.is_superuser:
             return Cart.objects.filter(paid=False)
         else:
-            carts: list[Cart] = Cart.objects.filter(account=self.request.user, paid=False)
+            carts: list[Cart] = Cart.objects.filter(
+                account=self.request.user, paid=False
+            )
             return carts
+
 
 class CartUuidView(generics.RetrieveDestroyAPIView):
     permission_classes = [IsAuthenticated]
@@ -87,7 +94,8 @@ class CartUuidView(generics.RetrieveDestroyAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
-    lookup_field='cart_uuid'
+    lookup_field = 'cart_uuid'
+
 
 class PaymentView(APIView):
     permission_classes = [IsAuthenticated]
@@ -108,10 +116,10 @@ class PaymentView(APIView):
 
         if not queryset:
             return Response(
-                {"detail": "No pending to be paid"},
+                {'detail': 'No pending to be paid'},
                 status.HTTP_422_UNPROCESSABLE_ENTITY,
             )
 
         queryset.update(paid=True)
 
-        return Response({"status": "successful payment"}, status.HTTP_200_OK)
+        return Response({'status': 'successful payment'}, status.HTTP_200_OK)
